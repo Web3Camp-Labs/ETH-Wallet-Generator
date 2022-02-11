@@ -65,9 +65,9 @@ const Home: NextPage = () => {
     const [showType,setShowType] = useState<boolean>(false);
     const [type,setType] = useState<string>('');
     const [mnemonic,setMnemonic] = useState<string>('');
-    const [seed,setSeed] = useState<Buffer>();
-    const [privateKey,setPrivateKey] = useState<Buffer>();
-    const [publicKey,setPublicKey] = useState<Buffer>();
+    const [seed,setSeed] = useState<Buffer|null>();
+    const [privateKey,setPrivateKey] = useState<Buffer|null>();
+    const [publicKey,setPublicKey] = useState<Buffer|null>();
     const [address,setAddress] = useState<string>('');
     const [typeInput,setTypeInput] = useState<string>('');
     const [InputValue,setInputValue] = useState<string>('');
@@ -118,8 +118,6 @@ const Home: NextPage = () => {
 
     useEffect(()=>{
         if(publicKey ==null ) return;
-
-            console.log("=====publicKey==",publicKey)
             const addr: Buffer = pubToAddress(publicKey,true)
             setAddress(bufferToHex(addr));
             setLoading(false)
@@ -153,6 +151,13 @@ const Home: NextPage = () => {
 
     const handleType = () =>{
        setShowType(!showType)
+        setInputValue('')
+        setTypeInput('')
+        setMnemonic('')
+        setSeed(null)
+        setPrivateKey(null)
+        setPublicKey(null)
+        setAddress('')
     }
     const handleInputChange = (e:ChangeEvent) => {
         const eventObj = e.target as HTMLInputElement;
@@ -165,7 +170,6 @@ const Home: NextPage = () => {
     }
 
     const handleRecovery = () =>{
-        console.log("==typeInput,InputValue=====",typeInput,InputValue)
         switch(typeInput){
             case 'mnemonic':
                 setMnemonic(InputValue)
@@ -183,6 +187,7 @@ const Home: NextPage = () => {
 
         }
         setShowType(false)
+        setInputValue('')
     }
   return (
     <div>
@@ -191,7 +196,7 @@ const Home: NextPage = () => {
                 type="switch"
                 id="custom-switch"
                 label="Create/Recovery"
-                value={showType}
+                checked={showType}
                 onChange={()=>handleType()}
             />
         </SwitchBox>
