@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { Button, Spinner,Overlay, Form, FloatingLabel } from 'react-bootstrap';
 import * as bip39 from 'bip39';
 import { hdkey }from "ethereumjs-wallet";
-import { pubToAddress,bufferToHex } from "ethereumjs-util";
+import { pubToAddress,bufferToHex, toBuffer } from "ethereumjs-util";
 import Layout from "../components/layout/layout";
+import privateKeyToPublicKey from 'ethereum-private-key-to-public-key'
 
 import {Bookmark, BookmarkCheck,Files} from 'react-bootstrap-icons';
 
@@ -88,9 +89,9 @@ const Home: NextPage = () => {
 
             const key: any = hdWallet.derivePath(path);
             const privateKeyB: Buffer = key._hdkey._privateKey;
-            const pubKey: Buffer = key._hdkey._publicKey;
+            // const pubKey: Buffer = key._hdkey._publicKey;
 
-            setPublicKey(pubKey);
+            // setPublicKey(pubKey);
             setPrivateKey(privateKeyB);
         }
         if(seed == null || !seed) return;
@@ -100,11 +101,30 @@ const Home: NextPage = () => {
 
     useEffect(()=>{
         if(privateKey ==null ) return;
+
+        let public_key;
+                public_key =privateKeyToPublicKey(privateKey)
+                setPublicKey(public_key)
+
+
+            // else{
+            //     public_key = publicKey;
+            // }
+            // const addr: Buffer = pubToAddress(public_key,true)
+            // setAddress(bufferToHex(addr));
+            // setLoading(false)
+
+    },[privateKey])
+
+    useEffect(()=>{
+        if(publicKey ==null ) return;
+
+            console.log("=====publicKey==",publicKey)
             const addr: Buffer = pubToAddress(publicKey,true)
             setAddress(bufferToHex(addr));
             setLoading(false)
 
-    },[privateKey])
+    },[publicKey])
 
     const handleCreate = () =>{
         const mnemonicWord: string = bip39.generateMnemonic();
@@ -148,17 +168,21 @@ const Home: NextPage = () => {
         console.log("==typeInput,InputValue=====",typeInput,InputValue)
         switch(typeInput){
             case 'mnemonic':
-
+                setMnemonic(InputValue)
                 break;
             case 'seed':
+                setSeed(toBuffer(InputValue))
                 break;
-            case 'privateKey':
+            case 'PrivateKey':
+                setPrivateKey(toBuffer(InputValue))
                 break;
             case 'publicKey':
+                setPublicKey(toBuffer(InputValue))
                 break;
             default:break;
 
         }
+        setShowType(false)
     }
   return (
     <div>
