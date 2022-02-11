@@ -137,7 +137,7 @@ export default function  Batch<NextPage>() {
             </Button>
             {
                 !!list.length && <CsvDownloader
-                    datas={list}
+                    datas={list as any}
                     filename={`myWallets_${list[0]?.address}`}
                     extension=".csv"> <Button variant="dark"> <Download /> Download</Button>
                 </CsvDownloader>

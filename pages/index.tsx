@@ -1,14 +1,15 @@
-import React, {ReactNode, useEffect, useState, useRef, ChangeEvent} from "react";
+import React, {ReactNode, useEffect, useState, useRef, ChangeEvent, ReactElement, ComponentType} from "react";
 import type { NextPage } from 'next'
 import styled from "styled-components";
 import { Button, Spinner,Overlay, Form, FloatingLabel } from 'react-bootstrap';
 import * as bip39 from 'bip39';
 import { hdkey }from "ethereumjs-wallet";
-import { pubToAddress,bufferToHex, toBuffer } from "ethereumjs-util";
+import { pubToAddress,bufferToHex, toBuffer,privateToPublic } from "ethereumjs-util";
 import Layout from "../components/layout/layout";
-import privateKeyToPublicKey from 'ethereum-private-key-to-public-key'
+
 
 import {Bookmark, BookmarkCheck,Files} from 'react-bootstrap-icons';
+import {AppProps} from "next/app";
 
 const Ulbox = styled.ul`
     padding: 0;
@@ -58,7 +59,7 @@ const FloatBox = styled(FloatingLabel)`
  
 `
 
-const Home: NextPage = () => {
+export default function  Home<NextPage>() {
     const [loading,setLoading] = useState<boolean>(false);
     const [current,setCurrent] = useState<any>(null);
     const [show,setShow] = useState<boolean>(false);
@@ -83,6 +84,7 @@ const Home: NextPage = () => {
     },[mnemonic])
 
     useEffect(()=>{
+        if(seed == null || !seed ) return;
         const GeneratePrivateKey = async () =>{
             const hdWallet: any = hdkey.fromMasterSeed(seed);
             const path:string =`m/44'/60'/0'/0/0`;
@@ -94,7 +96,7 @@ const Home: NextPage = () => {
             // setPublicKey(pubKey);
             setPrivateKey(privateKeyB);
         }
-        if(seed == null || !seed) return;
+
         GeneratePrivateKey();
 
     },[seed])
@@ -103,16 +105,8 @@ const Home: NextPage = () => {
         if(privateKey ==null ) return;
 
         let public_key;
-                public_key =privateKeyToPublicKey(privateKey)
-                setPublicKey(public_key)
-
-
-            // else{
-            //     public_key = publicKey;
-            // }
-            // const addr: Buffer = pubToAddress(public_key,true)
-            // setAddress(bufferToHex(addr));
-            // setLoading(false)
+        public_key = privateToPublic(privateKey)
+        setPublicKey(public_key)
 
     },[privateKey])
 
@@ -130,7 +124,7 @@ const Home: NextPage = () => {
         setLoading(true)
     }
 
-    const copyStr = (content: string,typeStr:string,e:ChangeEvent) => {
+    const copyStr = (content: string,typeStr:string,e:any) => {
         const el = document.createElement('textarea');
         el.value = content;
         document.body.appendChild(el);
@@ -444,7 +438,7 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home;
+
 
 interface LayoutProps {
     children: ReactNode;
