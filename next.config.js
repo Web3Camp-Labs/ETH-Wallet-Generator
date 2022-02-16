@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+
+const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   distDir: 'build',
   reactStrictMode: true,
@@ -8,4 +10,5 @@ module.exports = {
     styledComponents: true,
 
   },
+  assetPrefix: isProd ?'/ETH-Wallet-Generator':'',
 }
