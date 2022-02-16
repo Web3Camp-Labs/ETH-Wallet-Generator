@@ -4,17 +4,17 @@ const GlobalStyle = createGlobalStyle`
 
     @font-face {
       font-family: "din_regular";
-      src: url('../assets/fonts/din_regular.otf');
+      src: url('./assets/fonts/din_regular.otf');
     }
     
     @font-face {
       font-family: "din_medium";
-      src: url('../assets/fonts/din_medium.otf');
+      src: url('./assets/fonts/din_medium.otf');
     }
     
     @font-face {
       font-family: "din_bold";
-      src: url('../assets/fonts/din_bold.otf');
+      src: url('./assets/fonts/din_bold.otf');
     }
     
     *{
