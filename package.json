@@ -1,6 +1,7 @@
 {
   "name": "wallet-create",
   "private": true,
+  "homepage": ".",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
