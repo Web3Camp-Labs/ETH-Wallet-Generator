@@ -4,7 +4,7 @@ import { NextPage } from 'next'
 import { ReactNode,ComponentType,ReactElement } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/globals.css'
+import '../public/globals.css'
 
 import type { AppProps } from 'next/app'
 
