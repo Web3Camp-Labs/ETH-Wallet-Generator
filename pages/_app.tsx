@@ -4,6 +4,7 @@ import { NextPage } from 'next'
 import { ReactNode,ComponentType,ReactElement } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/globals.css'
 
 import type { AppProps } from 'next/app'
 
@@ -24,7 +25,6 @@ function MyApp({ Component, pageProps }: IAppProps) {
       <title>ETH WALLET GENERATOR</title>
       <meta name="description" content="Generate ETH Wallet Address in pure webpage from scratch!" />
       <link rel="icon" href="./favicon.ico" />
-        <link rel="stylesheet" href="https://web3camp.us/globals.css"/>
     </Head>
     {getLayout(<Component {...pageProps} />)}
   </>
