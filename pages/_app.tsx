@@ -3,8 +3,9 @@ import Head from "next/head";
 import { NextPage } from 'next'
 import { ReactNode,ComponentType,ReactElement } from 'react';
 
-import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/globals.css'
+
 import type { AppProps } from 'next/app'
 
 export type Page<P = {}> = NextPage<P> & {

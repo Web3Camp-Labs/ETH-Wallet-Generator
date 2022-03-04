@@ -3,7 +3,7 @@ import HeaderTop from "./headTop";
 import styled from "styled-components";
 import {Container, Row, Col, Card} from 'react-bootstrap';
 import LeftBox from "./Lftbox";
-import  GlobalStyle from '../../public/utils/GloablStyle'
+// import  GlobalStyle from '../../public/utils/GloablStyle'
 
 const MainBox = styled.div`
     display: flex;
@@ -34,6 +34,6 @@ export default function  Layout<FC>({ children}: LayoutProps ) {
                     </Row>
                 </BgBox>
                </MainBox>
-                <GlobalStyle />
+                {/*<GlobalStyle />*/}
         </div>
 }
