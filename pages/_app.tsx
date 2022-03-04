@@ -2,9 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { NextPage } from 'next'
 import { ReactNode,ComponentType,ReactElement } from 'react';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../public/globals.css'
 
 import type { AppProps } from 'next/app'
 
@@ -27,6 +25,7 @@ function MyApp({ Component, pageProps }: IAppProps) {
       <link rel="icon" href="./favicon.ico" />
     </Head>
     {getLayout(<Component {...pageProps} />)}
+      <link rel="stylesheet" href="https://web3camp.us/globals.css"/>
   </>
 }
 
