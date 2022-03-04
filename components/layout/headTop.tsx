@@ -6,7 +6,7 @@ export default function HeaderTop() {
     return <div className="header">
         <Container>
             <Row>
-                <Col className="headerTxt" md={8} xs={12}>Wallet Address Generator</Col>
+                <Col className="headerTxt" md={8} xs={12}>ETH Wallet Generator</Col>
                 <Col className="headetRht" md={4} xs={12}>&copy; Web3 Camp</Col>
             </Row>
         </Container>
