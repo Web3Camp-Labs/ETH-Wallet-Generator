@@ -3,6 +3,7 @@ import HeaderTop from "./headTop";
 import styled from "styled-components";
 import {Container, Row, Col, Card} from 'react-bootstrap';
 import LeftBox from "./Lftbox";
+import FooterBox from "./footerBox";
 // import  GlobalStyle from '../../public/utils/GloablStyle'
 
 const MainBox = styled.div`
@@ -34,6 +35,7 @@ export default function  Layout<FC>({ children}: LayoutProps ) {
                     </Row>
                 </BgBox>
                </MainBox>
+            <FooterBox />
                 {/*<GlobalStyle />*/}
         </div>
 }
