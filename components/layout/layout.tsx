@@ -6,8 +6,14 @@ import LeftBox from "./Lftbox";
 import FooterBox from "./footerBox";
 // import  GlobalStyle from '../../public/utils/GloablStyle'
 
+const MainContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`
 const MainBox = styled.div`
     display: flex;
+  flex-grow: 1;
 `
 
 const BgBox = styled(Container)`
@@ -25,7 +31,7 @@ interface LayoutProps {
 }
 
 export default function  Layout<FC>({ children}: LayoutProps ) {
-    return <div>
+    return <MainContent>
             <HeaderTop />
             <MainBox>
                 <BgBox>
@@ -37,5 +43,5 @@ export default function  Layout<FC>({ children}: LayoutProps ) {
                </MainBox>
             <FooterBox />
                 {/*<GlobalStyle />*/}
-        </div>
+        </MainContent>
 }

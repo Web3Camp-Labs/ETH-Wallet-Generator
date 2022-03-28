@@ -2,11 +2,8 @@ import styled from "styled-components";
 import {Container} from 'react-bootstrap';
 const Footer = styled.div`
   height: 80px;
-  margin-top: 100px;
-  position: fixed;
+  margin-top: 60px;
   width: 100vw;
-  left: 0;
-  bottom: 0;
   .midBox{
     display: flex;
     justify-content: space-between;
