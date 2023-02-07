@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: IAppProps) {
       <meta name="description" content="Generate ETH Wallet Address in pure webpage from scratch!" />
       <link rel="icon" href="./favicon.ico" />
     </Head>
-    {getLayout(<Component {...pageProps} /> as any)}
+    {getLayout(<Component {...pageProps} />)}
       <link rel="stylesheet" href="./globals.css"/>
   </>
 }
