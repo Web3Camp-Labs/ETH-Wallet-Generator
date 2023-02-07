@@ -33,7 +33,7 @@ export default function footerBox(){
                 </a>
 
                 <div>
-                    <a href="https://github.com/Web3Camp-Labs/faucet-list" target="_blank" rel="noreferrer">
+                    <a href="https://github.com/Web3Camp-Labs/ETH-Wallet-Generator" target="_blank" rel="noreferrer">
                         <img src="./github.png" alt=""/>
                     </a>
                     <a href="https://twitter.com/Web3Camp" target="_blank" rel="noreferrer">
